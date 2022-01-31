@@ -278,6 +278,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Penetration Toolkit for attacking Cisco Phone Systems by stealing credentials from phone configuration files')
     parser.add_argument('-H','--host', default=None, type=str, help='IP Address of Cisco Unified Communications Manager')
     parser.add_argument('--userenum', action='store_true', default=False, help='Enable user enumeration via UDS api')
+    parser.add_argument('--outfile', type=str, default='cucm_users.txt', help='Filename to output enumerated users to.')
     parser.add_argument('-p','--phone', type=str, help='IP Address of a Cisco Phone')
     parser.add_argument('-s','--subnet', type=str, help='IP Address of a Cisco Phone')
     parser.add_argument('-v','--verbose', action='store_true', default=False, help='Enable Verbose Logging')
@@ -294,6 +295,7 @@ if __name__ == '__main__':
     found_usernames = []
     file_names = ''
     hostnames = []
+    outfile = args.outfile
 
     get_version(CUCM_host)
 
@@ -375,11 +377,11 @@ if __name__ == '__main__':
         if api_users != []:
             unique_users = set(api_users)
             api_users = list(unique_users)
-            with open('./cucm_users.txt', mode='w') as outfile:
+            with open(outfile, mode='w') as outputfile:
                 for line in api_users:
-                    outfile.writelines(line)
+                    outputfile.write(line+'\n')
             print(f'The following {len(api_users)} users were identified from the UDS API')
-
-            for username in api_users:
-                print('{0}'.format(username))
+            if verbose:
+                for username in api_users:
+                    print('{0}'.format(username))
 
