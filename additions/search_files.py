@@ -73,7 +73,7 @@ def search_for_secrets(CUCM_host,filename):
         for text in search_strings:
             for tag in content.find_all(re.compile(text)):
                 matches.append(tag)
-                print(tag.text)
+#                print(tag.text)
 
     except Exception as e:
         print("Could not connect to http://{0}:6970/{1}".format(CUCM_host,filename))
