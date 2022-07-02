@@ -14,4 +14,18 @@ Service Profile
 - https://{CUCM}:6972/homeClusterUser.xml
 - https://{CUCM}:6972/CSF{username}.cnf.xml
 
+Filesnames:
+- SEPDefault.cnf
+- MTPDefault.cnf
+- CFBDefault.cnf
+- SAADefault.cnf
+- SDADefault.cnf
+- lddefault.cfg
+- gkdefault.cfg
+- SIPDefault.cnf
+- XMLDefault.cnf.xml.sgn
+- AppDialRules.xml
+- DirLookupDialRules.xml
+- global-settings.xml.sgn
+
 ```
